@@ -80,8 +80,8 @@ def load_plugins(plugins=None, parent=None):
                     if hasattr(module, attribute):
                         action(getattr(module, attribute))
                 modules.append(module)
-            except:
-                logging.exception('Failed to load plugin: ' + plugin[NAME])
+            except Exception as e:
+                logging.exception(f"Failed to load plugin {plugin[NAME]}; error={e}")                
 
     for d in PLUGIN_DIRS:
         del (sys.path[0])
